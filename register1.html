@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <!-- Required meta tags-->
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title Page-->
+    <title>ระบบฝาก/เติมเงิน</title>
+
+    <!-- Icons font CSS-->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+        integrity="sha512-rRQtF4V2wtAvXsou4iUAs2kXHi3Lj9NE7xJR77DE7GHsxgY9RTWy93dzMXgDIG8ToiRTD45VsDNdTiUagOFeZA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font special for pages-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
+    <!-- Vendor CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.12.7/dist/sweetalert2.min.css">
+    <!-- Main CSS-->
+    <?!= include('css') ?>
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading ">
+                    <img src="http://drive.google.com/uc?view&id=1iOMt_bpESosG6mHfXYJyWWlcRZXrWB8R" 
+                        class="mx-auto d-block img-size-2 img-fluid" alt="">
+                </div>
+                <div class="card-body">
+                    <form method="POST" autocomplete="off" name="google-sheet" id="google-sheet">
+                        <div class="form-row">
+                            <div class="name">User </div>
+                            <div class="value">
+                                <div class="input-group">
+                                  <label class="input-group">(ใส่ User ที่ถูกต้อง)</label>
+                                    <input required class="input--style-5" type="text" name="ยุเซอร์" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">จำนวนเงิน</div>
+                            <div class="value">
+                                <div class="input-group">
+                                  <label class="input--group">(ใส่จำนวนเงินที่ถูกต้อง)</label>
+                                  <input required class="input--style-5" type="text" name="จำนวนเงิน" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">โปรดเลือกโปรโมชั่น</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search" required>
+                                        <select name="โปรดเลือกโปรโมชั่น" required>
+                                            <option disabled="disabled" selected>โปรดเลือกโปรโมชั่น</option>
+                                             <option value="ไม่รับโบนัส">ไม่รับโบนัส</option>
+                                            <option value="โปรโมชั่นฝาก30บาท รับเครดิต 70บาท ทํายอด5เท่าถอนได้ 100บาท">
+                                                โปรโมชั่นฝาก30บาท รับเครดิต 70บาท ทํายอด5เท่าถอนได้ 100บาท</option>
+                                            </option>
+                                        </select>
+                                        <div class="select-dropdown"></div>                                        
+                                    </div>
+
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+                                    <h4>SCB : กัญญารัตน์ เพียรขุนทด <span class="label label-default">503-421-7831</span></h4>
+                                    <h4>Wallet : ณัฐพงษ์ ดีปัญโญ <span class="label label-default">084-127-0561</span>
+                                    </h4>
+                                </div>   
+                        <div class="form-row">
+								<button class="btn-upload btn--radius-2 btn--blue" type="button"
+                                        name="upload" id="upload">อัพโหลดใบสลิป</button>
+								&nbsp;&nbsp;<label class="custom-file-label" for="customFile"></label>
+								<input type="file" class="custom-file-input" id="customFile" required hidden>
+							</div>
+								<div class="form-row">
+                                    <button class="btn btn--radius-2 btn--red" type="submit"
+                                        name="submit">กดฝากเงิน</button>
+                                    <p class="loading"> <i class="fas fa-info-circle"></i> บันทึกรายการเรียบร้อยค่ะ <em
+                                            class="emgreen">ND.BETWOSกำลังทำรายการฝากเงินเข้า User
+                                            </em> รบกวนคุณลูกค้ารอไม่เกิน 5 นาที</p>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--   JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.12.7/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
+        crossorigin="anonymous"></script> -->
+
+    <!-- Main JS-->
+
+    <script>
+        $(document).ready(function () {
+            var selectSimple = $('.js-select-simple');
+
+            selectSimple.each(function () {
+                var that = $(this);
+                var selectBox = that.find('select');
+                var selectDropdown = that.find('.select-dropdown');
+                selectBox.select2({
+                    dropdownParent: selectDropdown
+                });
+            });
+        });
+
+        $('#upload').click(function(){
+          $('#customFile').click()
+        })
+        const scriptURL =
+            'https://script.google.com/macros/library/d/1O504r1O1kG20JhqM2Q1txz_1q3utKHxRGQ6IfxEmUmKUj2hjDInnqGSU/2'
+        const form = document.forms['google-sheet']
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            let formdata = $('#google-sheet').serializeArray()
+            formdata.push({
+              name: 'file',
+              value: myfile
+            })
+            console.log(formdata)
+            Swal.fire({
+              icon: 'info',
+              text: 'กำลังบันทึกข้อมูล',
+              allowOutsideClick: false,
+              showConfirmButton: false
+            })
+            google.script.run.withFailureHandler(e=> console.log(e)).withSuccessHandler(response =>{
+              form.reset()
+               Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'ท่านฝาก/เติม เรียบร้อยแล้วค่ะ',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }).saveData(formdata)
+        })
+    </script>
+    <script>
+      var myfile ={},file,reader = new FileReader()
+      reader.onloadend = function(e){
+        myfile.data = e.target.result
+        myfile.name = file.name
+        $('label[for="customFile"]').html(file.name)
+        console.log(myfile)
+      }
+      $('#customFile').change(function(){
+        file = $('#customFile')[0].files[0]
+        reader.readAsDataURL(file)
+      })
+    </script>
+    <!-- <?!= include('java') ?> -->
+</body>
+
+</html>
